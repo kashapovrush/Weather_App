@@ -1,4 +1,4 @@
-plugins {
+    plugins {
     alias(libs.plugins.androidApplication)
     alias(libs.plugins.jetbrainsKotlinAndroid)
     alias(libs.plugins.ksp)
@@ -57,6 +57,17 @@ android {
 
 dependencies {
 
+    implementation(project(":core:database:database-api"))
+    implementation(project(":core:database:database-impl"))
+    implementation(project(":core:network:network-api"))
+    implementation(project(":core:network:network-impl"))
+    implementation(project(":features-mobile:common"))
+    implementation(project(":features-mobile:palette"))
+    implementation(project(":features-mobile:favourite-screen"))
+    implementation(project(":features-mobile:search-screen"))
+    implementation(project(":features-mobile:details-screen"))
+    implementation(project(":core:utils"))
+
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.lifecycle.runtime.ktx)
     implementation(libs.androidx.activity.compose)
@@ -73,17 +84,20 @@ dependencies {
     androidTestImplementation(libs.androidx.ui.test.junit4)
     debugImplementation(libs.androidx.ui.tooling)
     debugImplementation(libs.androidx.ui.test.manifest)
+
     implementation(libs.mvikotlin.core)
     implementation(libs.mvikotlin.main)
     implementation(libs.mvikotlin.coroutines)
     implementation(libs.decompose.core)
     implementation(libs.decompose.compose)
-    implementation(libs.room.core)
-    ksp(libs.room.compiler)
+
     implementation(libs.dagger.core)
     ksp(libs.dagger.compiler)
     implementation(libs.retrofit.core)
     implementation(libs.retrofit.gson)
     implementation(libs.glide)
+
+    implementation(libs.room.core)
+    ksp(libs.room.compiler)
 
 }
