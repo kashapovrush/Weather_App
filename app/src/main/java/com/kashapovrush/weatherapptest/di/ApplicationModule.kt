@@ -1,16 +1,16 @@
 package com.kashapovrush.weatherapptest.di
 
 import android.content.Context
-import com.kashapovrush.weatherapptest.data.database.AppDatabase
-import com.kashapovrush.weatherapptest.data.database.CityDao
-import com.kashapovrush.weatherapptest.data.network.api.ApiFactory
-import com.kashapovrush.weatherapptest.data.network.api.ApiService
-import com.kashapovrush.weatherapptest.data.repository.FavouriteRepositoryImpl
-import com.kashapovrush.weatherapptest.data.repository.SearchRepositoryImpl
-import com.kashapovrush.weatherapptest.data.repository.WeatherRepositoryImpl
-import com.kashapovrush.weatherapptest.domain.repository.FavouriteRepository
-import com.kashapovrush.weatherapptest.domain.repository.SearchRepository
-import com.kashapovrush.weatherapptest.domain.repository.WeatherRepository
+import com.kashapovrush.database_api.repository.FavouriteRepository
+import com.kashapovrush.database_impl.database.AppDatabase
+import com.kashapovrush.database_impl.database.CityDao
+import com.kashapovrush.database_impl.repository.FavouriteRepositoryImpl
+import com.kashapovrush.network_api.repository.SearchRepository
+import com.kashapovrush.network_api.repository.WeatherRepository
+import com.kashapovrush.network_impl.api.ApiFactory
+import com.kashapovrush.network_impl.api.ApiService
+import com.kashapovrush.network_impl.repository.SearchRepositoryImpl
+import com.kashapovrush.network_impl.repository.WeatherRepositoryImpl
 import dagger.Binds
 import dagger.Module
 import dagger.Provides
@@ -33,7 +33,7 @@ interface ApplicationModule {
         fun provideApiService(): ApiService = ApiFactory.apiService
 
         @[Provides ApplicationScope]
-        fun provideAppDatabase(context: Context): AppDatabase=  AppDatabase.getInstance(context)
+        fun provideAppDatabase(context: Context): AppDatabase =  AppDatabase.getInstance(context)
 
         @[Provides ApplicationScope]
         fun provideCityDao(database: AppDatabase): CityDao = database.cityDao()
